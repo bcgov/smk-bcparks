@@ -1,0 +1,399 @@
+{
+  "lmfId": "michelle-parks-test",
+  "lmfRevision": 3,
+  "version": "",
+  "name": "BC Parks - Location Map",
+  "createdBy": "",
+  "published": true,
+  "surround": {
+    "type": "default",
+    "title": ""
+  },
+  "viewer": {
+    "type": "leaflet",
+    "location": {
+      "extent": [
+        -120.75927734375,
+        56.401744392759,
+        -104.71923828125,
+        49.196064000724
+      ],
+      "center": [
+        -117.1782,
+        55.39
+      ],
+      "zoom": 6
+    },
+    "baseMap": "Topographic",
+    "clusterOption": false
+  },
+  "tools": [
+    {
+      "type": "coordinate",
+      "enabled": true,
+      "title": "Coordinate",
+      "showPanel": true
+    },
+    {
+      "type": "attribution",
+      "enabled": false,
+      "title": "Attribution",
+      "showPanel": true
+    },
+    {
+      "type": "layers",
+      "enabled": true,
+      "title": "Layers Panel",
+      "showPanel": true
+    },
+    {
+      "type": "pan",
+      "enabled": true,
+      "title": "Panning",
+      "showPanel": true
+    },
+    {
+      "type": "zoom",
+      "enabled": true,
+      "title": "Zooming",
+      "showPanel": true,
+      "mouseWheel": true,
+      "doubleClick": true,
+      "box": true,
+      "control": true
+    },
+    {
+      "type": "measure",
+      "enabled": false,
+      "title": "Measurement",
+      "showPanel": true
+    },
+    {
+      "type": "markup",
+      "enabled": false,
+      "title": "Markup",
+      "showPanel": true
+    },
+    {
+      "type": "scale",
+      "enabled": false,
+      "title": "Scale",
+      "showPanel": true,
+      "showFactor": true,
+      "showBar": true
+    },
+    {
+      "type": "minimap",
+      "enabled": true,
+      "title": "Mini Map",
+      "showPanel": true,
+      "baseMap": "Topographic"
+    },
+    {
+      "type": "directions",
+      "enabled": false,
+      "title": "Directions",
+      "showPanel": true
+    },
+    {
+      "type": "about",
+      "enabled": true,
+      "title": "About Panel",
+      "showPanel": true,
+      "content": "<h2>Browse for a park<\/h2><h2><img class=\"task-icon\" src=\"http:\/\/www.env.gov.bc.ca\/bcparks\/_shared\/mapImages\/mapIcons\/cluster.png\" style=\"background-color: initial; color: rgb(85, 85, 85); font-size: 14px; font-style: italic; font-weight: normal;\">&nbsp;&nbsp;<span style=\"background-color: initial; color: inherit; font-size: 14px; font-style: italic; font-weight: normal;\">Shows a cluster of Parks (click or zoom to view)<\/span><\/h2><span style=\"color: inherit; background-color: initial; font-style: italic;\"><br><\/span><h2><img class=\"task-icon\" src=\"http:\/\/www.env.gov.bc.ca\/bcparks\/_shared\/mapImages\/mapIcons\/BCParkMapIcon1.png\" style=\"background-color: initial; color: rgb(85, 85, 85); font-size: 14px; font-style: italic; font-weight: normal;\">&nbsp;&nbsp;<span style=\"background-color: initial; color: inherit; font-size: 14px; font-style: italic; font-weight: normal;\">Parks, Protected Areas, Conservancies, Recreation Areas<\/span><\/h2><span style=\"color: inherit; background-color: initial; font-style: italic;\"><br><\/span><h2><img class=\"task-icon\" src=\"http:\/\/www.env.gov.bc.ca\/bcparks\/_shared\/mapImages\/mapIcons\/BCParkMapIcon2.png\" style=\"background-color: initial; color: rgb(85, 85, 85); font-size: 14px; font-style: italic; font-weight: normal;\">&nbsp;&nbsp;<span style=\"background-color: initial; color: inherit; font-size: 14px; font-style: italic; font-weight: normal;\">Ecological Reserves, Wildlife Management Areas (WMAs), Conservation Study Areas<\/span><\/h2><p class=\"note\" style=\"color: rgb(51, 51, 51);\">&nbsp;Note: Map data is representational only and should&nbsp;<br>&nbsp;not be used for navigational purposes.&nbsp;<\/p><br><br><p class=\"note\" style=\"color: rgb(51, 51, 51);\"><br><\/p>"
+    },
+    {
+      "type": "location",
+      "enabled": false,
+      "title": "Location",
+      "showPanel": true
+    },
+    {
+      "type": "baseMaps",
+      "enabled": true,
+      "title": "Base Maps Panel",
+      "showPanel": true,
+      "choices": [
+        "Topographic",
+        "Streets",
+        "Imagery"
+      ]
+    },
+    {
+      "type": "select",
+      "enabled": false,
+      "title": "Selection Panel",
+      "showPanel": true,
+      "style": {
+        "strokeWidth": 1,
+        "strokeStyle": "1, 1",
+        "strokeColor": "#000000",
+        "strokeOpacity": 0.8,
+        "fillColor": "#000000",
+        "fillOpacity": 0.5,
+        "markerSize": [
+          20,
+          20
+        ],
+        "markerOffset": [
+          10,
+          10
+        ]
+      },
+      "styleOpacity": 1
+    },
+    {
+      "type": "identify",
+      "enabled": true,
+      "title": "Identify Panel",
+      "showPanel": false,
+      "style": {
+        "strokeWidth": 1,
+        "strokeStyle": "1, 1",
+        "strokeColor": "ceffff00",
+        "strokeOpacity": 1,
+        "fillColor": "#ffff00",
+        "fillOpacity": 0.65,
+        "markerSize": [
+          20,
+          20
+        ],
+        "markerOffset": [
+          10,
+          0
+        ]
+      },
+      "styleOpacity": 1,
+      "tolerance": 20
+    },
+    {
+      "type": "search",
+      "enabled": true,
+      "title": "Search Panel",
+      "showPanel": true
+    },
+    {
+      "type": "menu",
+      "enabled": false,
+      "title": "Menu",
+      "showPanel": true
+    },
+    {
+      "type": "dropdown",
+      "enabled": false,
+      "title": "Dropdown",
+      "showPanel": true
+    }
+  ],
+  "layers": [
+    {
+      "type": "wms",
+      "id": "parks",
+      "title": "Parks & Protected Area Boundaries",
+      "isVisible": true,
+      "attribution": "",
+      "metadataUrl": "",
+      "opacity": 0.65,
+      "isQueryable": true,
+      "attributes": [
+        
+      ],
+      "serviceUrl": "https:\/\/openmaps.gov.bc.ca\/om\/pub\/ows",
+      "layerName": "parks"
+    },
+    {
+      "type": "vector",
+      "id": "5614752895599375495-kml-ecological-reserves-wmas-conservation-study-areas",
+      "title": "Ecological Reserves, WMAs, Conservation Study Areas",
+      "isVisible": true,
+      "opacity": 1,
+      "isQueryable": true,
+      "attributes": [
+        {
+          "id": "styleUrl",
+          "name": "styleUrl",
+          "title": "styleUrl",
+          "visible": false
+        },
+        {
+          "id": "Picnic",
+          "name": "Picnic",
+          "title": "Picnic",
+          "visible": true
+        },
+        {
+          "id": "Date-Established",
+          "name": "Date-Established",
+          "title": "Date Established",
+          "visible": true
+        },
+        {
+          "id": "Wilderness-Camping",
+          "name": "Wilderness-Camping",
+          "title": "Wilderness Camping",
+          "visible": true
+        },
+        {
+          "id": "Vehicle-Access",
+          "name": "Vehicle-Access",
+          "title": "Vehicle Access",
+          "visible": true
+        },
+        {
+          "id": "Class",
+          "name": "Class",
+          "title": "Class",
+          "visible": true
+        },
+        {
+          "id": "Boat-Launch",
+          "name": "Boat-Launch",
+          "title": "Boat Launch",
+          "visible": true
+        },
+        {
+          "id": "Name",
+          "name": "Name",
+          "title": "Name",
+          "visible": true
+        }
+      ],
+      "titleAttribute": "Name",
+      "queries": [
+        
+      ],
+      "dataUrl": "",
+      "useRaw": false,
+      "useClustering": true,
+      "useHeatmap": false,
+      "style": {
+        "strokeWidth": 4,
+        "strokeStyle": "1",
+        "strokeColor": "#000000",
+        "strokeOpacity": 1,
+        "fillColor": "#000000",
+        "fillOpacity": 0.8,
+        "markerUrl": "@5614752895599375495-kml-ecological-reserves-wmas-conservation-study-areas-marker",
+        "markerSize": [
+          30,
+          30
+        ],
+        "markerOffset": [
+          15,
+          15
+        ]
+      }
+    },
+    {
+      "type": "vector",
+      "id": "5614752895599375495-kml-parks-protected-areas-conservancies-recreation-areas",
+      "title": "Parks, Protected Areas, Conservancies, Recreation Areas",
+      "isVisible": true,
+      "opacity": 1,
+      "isQueryable": true,
+      "attributes": [
+        {
+          "id": "styleUrl",
+          "name": "styleUrl",
+          "title": "styleUrl",
+          "visible": false
+        },
+        {
+          "id": "Picnic",
+          "name": "Picnic",
+          "title": "Picnic",
+          "visible": true
+        },
+        {
+          "id": "Date-Established",
+          "name": "Date-Established",
+          "title": "Date Established",
+          "visible": true
+        },
+        {
+          "id": "Wilderness-Camping",
+          "name": "Wilderness-Camping",
+          "title": "Wilderness Camping",
+          "visible": true
+        },
+        {
+          "id": "Vehicle-Access",
+          "name": "Vehicle-Access",
+          "title": "Vehicle Access",
+          "visible": true
+        },
+        {
+          "id": "Class",
+          "name": "Class",
+          "title": "Class",
+          "visible": true
+        },
+        {
+          "id": "Boat-Launch",
+          "name": "Boat-Launch",
+          "title": "Boat Launch",
+          "visible": true
+        },
+        {
+          "id": "Name",
+          "name": "Name",
+          "title": "Name",
+          "visible": true
+        }
+      ],
+      "titleAttribute": "Name",
+      "queries": [
+        
+      ],
+      "dataUrl": "",
+      "useRaw": false,
+      "useClustering": true,
+      "useHeatmap": false,
+      "style": {
+        "strokeWidth": 1,
+        "strokeStyle": "1",
+        "strokeColor": "#000000",
+        "strokeOpacity": 1,
+        "fillColor": "#000000",
+        "fillOpacity": 0.65,
+        "markerUrl": "@5614752895599375495-kml-parks-protected-areas-conservancies-recreation-areas-marker",
+        "markerSize": [
+          30,
+          30
+        ],
+        "markerOffset": [
+          15,
+          15
+        ]
+      }
+    }
+  ],
+  "_id": "36e625dfc49065e5ab58ebfdaa021247",
+  "_rev": "2-07e9f548c7f247c6fc8108c859a5ce1a",
+  "_attachments": {
+    "5614752895599375495-kml-ecological-reserves-wmas-conservation-study-areas-marker": {
+      "stub": true,
+      "revpos": 1,
+      "digest": "md5-hEIfThsOo5M6l61NzQMSOQ==",
+      "content_type": "image\/png"
+    },
+    "5614752895599375495-kml-parks-protected-areas-conservancies-recreation-areas": {
+      "stub": true,
+      "revpos": 1,
+      "digest": "md5-zhqMwC5yrLL4jUUuPrSBuA==",
+      "content_type": "application\/octet-stream"
+    },
+    "5614752895599375495-kml-ecological-reserves-wmas-conservation-study-areas": {
+      "stub": true,
+      "revpos": 1,
+      "digest": "md5-QVGoQw0eeuouPt6CGqYGWg==",
+      "content_type": "application\/json"
+    },
+    "5614752895599375495-kml-parks-protected-areas-conservancies-recreation-areas-marker": {
+      "stub": true,
+      "revpos": 1,
+      "digest": "md5-N1Pe5MHOEUelOxrWwkigFQ==",
+      "content_type": "image\/png"
+    }
+  }
+}
