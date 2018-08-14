@@ -1,8 +1,8 @@
 FROM alpine:3.7
-MAINTAINER steve.darvill@gov.bc.ca
+MAINTAINER databcmaps@gov.bc.ca
 
-ARG plugins=http.cors,http.git,http.hugo,http.realip
-ARG http_port=5000
+ARG plugins=http.cors,http.realip,http.git
+ARG http_port=8080
 
 RUN apk update \
     && apk --no-cache add git openssh-client \
@@ -11,23 +11,19 @@ RUN apk update \
 #Install Caddy Server, and All Middleware
 RUN curl --silent --show-error --fail --location \
       --header "Accept: application/tar+gzip, application/x-gzip, application/octet-stream" -o - \
-      "https://caddyserver.com/download/linux/amd64?plugins=${plugins}&license=personal" \
+      "https://caddyserver.com/download/linux/amd64?plugins=$plugins&license=personal" \
     | tar --no-same-owner -C /usr/bin/ -xz caddy \
  && chmod 0755 /usr/bin/caddy \
  && /usr/bin/caddy -version
 
 
 #create a default Caddyfile
-RUN printf "0.0.0.0:$http_port\nroot /app\nlog stdout\nerrors stdout\next .png .kml .html .htm" > /etc/Caddyfile
-RUN mkdir -p /app  
+COPY Caddyfile /etc/Caddyfile
 WORKDIR /app
-ADD . /app
-RUN rm /app/*md /app/*file
-
 RUN adduser -S app
 RUN chown -R app:0 /app && chmod -R 770 /app
 RUN apk del --purge devs  
 
 USER app
-EXPOSE 5000
+EXPOSE 8080
 CMD ["caddy", "-quic", "--conf", "/etc/Caddyfile"]
