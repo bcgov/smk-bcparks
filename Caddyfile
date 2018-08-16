@@ -2,7 +2,7 @@
 git https://github.com/bcgov/smk-bcparks.git . {
  hook /_webook mypassword
 }
-root /app/smk-bcparks/bcparks
+root /app/smk-bcparks/sites
 gzip
 log stdout
 errors stdout
