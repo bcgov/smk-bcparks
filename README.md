@@ -30,7 +30,12 @@ For small-scale production deployment or development, docker container will do f
  $ docker run -p 8080:8080 bcparks
 ``` 
 ## Deploying as replicaSet to OpenShift
-``` $ oc new-app caddy-app-template~https://github.com/bcgov/smk-bcparks.git```
+``` 
+ $ oc new-app https://github.com/bcgov/smk-bcparks.git --strategy=docker
+ $ oc expose svc/smk-bcparks --hostname=bcparks.apps.gov.bc.ca
+ #following step only required if need to create TLS
+ $ oc create route edge --service=smk-bcparks --port=8080-tcp --hostname=bcparks.apps.gov.bc.ca
+```
 
 ## License
 
