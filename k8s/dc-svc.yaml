@@ -1,0 +1,83 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: smk-bcparks
+    smk-client: bcparks
+    smk-site: bcparks
+  name: smk-bcparks
+spec:
+  ports:
+  - name: http-proxy
+    port: 8080
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: smk-bcparks
+---
+apiVersion: v1
+data:
+  caddifile: |-
+      0.0.0.0:8080 {
+      git https://github.com/bcgov/smk-bcparks /app/smk {
+       branch {$branch}
+       hook /_webook mypassword
+      }
+      root /app/smk/sites
+      gzip
+      log stdout
+      errors stdout
+      }
+kind: ConfigMap
+metadata:
+  name: bcparks-caddifile
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smk-bcparks
+  labels:
+    app: smk-bcparks
+spec:
+  selector:
+    matchLabels:
+      app: smk-bcparks
+  serviceName: smk-bcparks
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: smk-bcparks
+      annotations:
+    spec:
+      containers:
+      - name: www
+        image: docker-registry.default.svc:5000/dbc-mapsdk-test/smk-base:latest
+        command: ["caddy", "-quic", "-conf"]
+        args: ["/conf/Caddyfile"]
+        volumeMounts:
+        - mountPath: /conf
+          name: caddy-conf
+        - mountPath: /app/smk
+          name: app-volume
+      volumes:
+      - name: caddy-conf
+        configMap:
+          name: bcparks-caddifile
+          items:
+          - key: caddifile
+            path: Caddyfile
+      - name: app-volume
+        persistentVolumeClaim:
+          claimName: app-volume
+  volumeClaimTemplates:
+  - metadata:
+      name: app-volume
+      annotations:
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
+  triggers:
+  - type: ConfigChange
