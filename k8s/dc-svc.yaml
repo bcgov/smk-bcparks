@@ -54,7 +54,7 @@ spec:
       - name: www
         env:
         - name: branch
-          value: qa      
+          value: qa
         image: docker-registry.default.svc:5000/dbc-mapsdk-test/smk-base:latest
         command: ["caddy", "-quic", "-conf"]
         args: ["/conf/Caddyfile"]
@@ -62,7 +62,7 @@ spec:
         - mountPath: /conf
           name: caddy-conf
         - mountPath: /app/smk
-          name: app-volume
+          name: bcparks-site
       volumes:
       - name: caddy-conf
         configMap:
@@ -70,17 +70,8 @@ spec:
           items:
           - key: caddifile
             path: Caddyfile
-      - name: app-volume
+      - name: bcparks-site
         persistentVolumeClaim:
-          claimName: app-volume
-  volumeClaimTemplates:
-  - metadata:
-      name: app-volume
-      annotations:
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 1Gi
+          claimName: bcparks-site
   triggers:
   - type: ConfigChange
