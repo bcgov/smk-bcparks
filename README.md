@@ -1,5 +1,5 @@
 # smk-bcparks
-A simple map for BC Parks (replacement for DMF)
+A simple map for BC Parks (replacement for DMF).
 
 # Installation
 BC Parks Simple map can be installed in 3 ways
