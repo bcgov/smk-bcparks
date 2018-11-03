@@ -31,10 +31,12 @@ For small-scale production deployment or development, docker container will do f
 ``` 
 ## Deploying as replicaSet to OpenShift
 ``` 
- $ oc new-app https://github.com/bcgov/smk-bcparks.git --strategy=docker
+ ##  first time pv claim
+ $ oc create -f k8s/pv.yaml
+ $ oc create -f k8s/dc-svc.yaml
  $ oc expose svc/smk-bcparks --hostname=bcparks.apps.gov.bc.ca
  #following step only required if need to create TLS
- $ oc create route edge --service=smk-bcparks --port=8080-tcp --hostname=bcparks.apps.gov.bc.ca
+ $ oc create route edge --service=smk-bcparks --hostname=bcparks.apps.gov.bc.ca
 ```
 
 ## License
