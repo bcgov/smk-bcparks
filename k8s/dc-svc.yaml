@@ -54,7 +54,7 @@ spec:
       - name: www
         env:
         - name: branch
-          value: qa
+          value: 
         image: docker-registry.default.svc:5000/dbc-mapsdk-test/smk-base:latest
         command: ["caddy", "-quic", "-conf"]
         args: ["/conf/Caddyfile"]
