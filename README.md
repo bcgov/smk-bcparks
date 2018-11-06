@@ -30,16 +30,19 @@ For small-scale production deployment or development, docker container will do f
  $ docker run -p 8080:8080 bcparks
 ``` 
 ## Deploying as replicaSet to OpenShift
-``` 
- ##  deploy smk-common-iac first
+```
+ ## following components should be deployed in -tools project space only.
+ ## deploy smk-common-iac first
  $ git clone https://github.com/bcgov/smk-common-iac.git
  $ cd smk-common-iac/openshift
  $ oc create -f iac-core.yaml
  ## wait till completion 
  $ oc create -f smk-base.yaml
- ## once core and base image creation completed, you can now deploy to production ready cluster, 
+ ## end of -tools project space components
+ ## once core and base image creation completed, you can now deploy to -prod or -test project spaces, 
  ## following sample is for bcparks QA site
  ## cleanup previous creation
+ $ oc project dbc-mapsdk-test
  $ oc process -f smk-site-deployment-template.yaml \
    SITE_NAME=bcparks \
    SITE_REPO="https://github.com/bcgov/smk-bcparks.git" \
