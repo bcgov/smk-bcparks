@@ -31,12 +31,31 @@ For small-scale production deployment or development, docker container will do f
 ``` 
 ## Deploying as replicaSet to OpenShift
 ``` 
- ##  first time pv claim
- $ oc create -f k8s/pv.yaml
- $ oc create -f k8s/dc-svc.yaml
+ ##  deploy smk-common-iac first
+ $ git clone https://github.com/bcgov/smk-common-iac.git
+ $ cd smk-common-iac/openshift
+ $ oc create -f iac-core.yaml
+ ## wait till completion 
+ $ oc create -f smk-base.yaml
+ ## once core and base image creation completed, you can now deploy to production ready cluster, 
+ ## following sample is for bcparks QA site
+ ## cleanup previous creation
+ $ oc process -f smk-site-deployment-template.yaml \
+   SITE_NAME=bcparks \
+   SITE_REPO="https://github.com/bcgov/smk-bcparks.git" \
+   REPO_BRANCH=qa WEBHOOK_PATH="/webhook" | oc delete -f -
+ ## install after cleanup
+ $ oc process -f smk-site-deployment-template.yaml \
+   SITE_NAME=bcparks \
+   SITE_REPO="https://github.com/bcgov/smk-bcparks.git" \
+   REPO_BRANCH=qa WEBHOOK_PATH="/webhook" | oc create -f - 
+ ## for HTTP only site run following  
  $ oc expose svc/smk-bcparks --hostname=bcparks.apps.gov.bc.ca
- #following step only required if need to create TLS
+ ## for HTTPS only site run following
  $ oc create route edge --service=smk-bcparks --hostname=bcparks.apps.gov.bc.ca
+ ## Optional Steps
+ ### get the secrets from secreteMap, and setup github Webhook, 
+ ### now you will have auto update from git Repo to running site alive
 ```
 
 ## License
